@@ -52,9 +52,7 @@ async function SingleAnime()
     
     let anime = {id, imageUrl_Banner, genres, publisher, audios, subTitles}
 
-    SendDataToAPI(anime);
-
-
+    SendDataToAPI(anime, 'http://localhost:3000/api/crunchyroll/update');
 }
 
 async function New()
@@ -115,15 +113,15 @@ async function New()
         rating = parseFloat(r[i].innerText);
 
         let anime = {id,url,imageUrl_Card,title,description,seasons,episodes,rating}
-        await SendDataToAPI(anime)
+        await SendDataToAPI(anime, 'http://localhost:3000/api/crunchyroll/update')
      }
 }
 
-async function SendDataToAPI(anime)
+async function SendDataToAPI(anime, apiUrl)
 {
     console.log(anime)
     // Send Anime to API.
-    await fetch('http://localhost:3000/api/crunchyroll/update', {
+    await fetch(apiUrl, {
     method: "POST",
     headers: {
         'Accept': 'application/json',
