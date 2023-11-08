@@ -2,6 +2,7 @@
     "manifest_version": 3,
     "name": "Crunchyroll Single Anime Scraper",
     "description": "Scrapes an Anime and send the Data to API or Mongo",
+    "permissions": ["storage", "tabs"],
     "version": "1.0",
     "icons": {
       "16": "images/cr.png",
@@ -11,10 +12,13 @@
     "action": {
       "default_title": "CR S Anime Scraper"
     },
+    "background": {
+      "service_worker": "background.js"
+    },
     "content_scripts": [
       {
         "matches": ["http://www.crunchyroll.com/*","https://www.crunchyroll.com/*"],
-        "js": ["test.js"]
+        "js": ["cr.js"]
       }
     ]
   }
